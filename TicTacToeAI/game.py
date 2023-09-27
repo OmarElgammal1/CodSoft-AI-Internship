@@ -31,18 +31,22 @@ class Game:
         self.n_turns -= 1
 
     def check_win(self):
+
         for i in range(self.size):
             if(self.board[i][0] == self.board[i][1] and self.board[i][1] == self.board[i][2] and self.board[i][0] != ' '):
                 return True
+        
             if(self.board[0][i] == self.board[1][i] and self.board[1][i] == self.board[2][i] and self.board[0][i] != ' '):
                 return True
         
         if(self.board[0][0] == self.board[1][1] and self.board[1][1] == self.board[2][2] and self.board[0][0] != ' '):
             return True
+
         if(self.board[0][2] == self.board[1][1] and self.board[1][1] == self.board[2][0] and self.board[0][2] != ' '):
             return True
+
         
-        return False
+        return 0
 
 def bestMove(g):
     best_score = -1000
@@ -51,7 +55,7 @@ def bestMove(g):
     for i in range(g.size):
         for j in range(g.size):
             if(g.make_move(i, j)):
-                score = minimax(g, False)
+                score = minimax(g, True)
                 g.undo(i, j)
                 if(score > best_score):
                     best_score = score
@@ -62,10 +66,10 @@ def bestMove(g):
 
 
 def minimax(g, is_maximizing):
-    if(g.check_win() == 1):
+    if(g.check_win() and g.n_turns % 2 == 1):
         return -10
     
-    elif(g.check_win() == 2):
+    elif(g.check_win() and g.n_turns % 2 == 0):
         return 10
     
     if(is_maximizing):
@@ -96,7 +100,7 @@ def play():
         i = int(input())
         g.make_move((i - 1) // 3, (i - 1) % 3)
         if(g.check_win()):
-            print("You win!")
+            print("You is_win!")
             break
         i, j = bestMove(g)
         g.make_move(i, j)
