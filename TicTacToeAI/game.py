@@ -47,51 +47,62 @@ class Game:
         return False
 
 def bestMove(g):
+    # Initialize best score and move
     best_score = -1000
     best_i = 0
     best_j = 0
+
+    # Loop through all possible moves
     for i in range(g.size):
         for j in range(g.size):
+            # Check if the move is valid
             if(g.make_move(i, j)):
+                # Calculate the score of the move
                 score = minimax(g, False)
+                # Undo the move
                 g.undo(i, j)
+                # Update the best score and move if necessary
                 if(score > best_score):
                     best_score = score
                     best_i = i
                     best_j = j
-    
+
+    # Return the best move
     return best_i, best_j
 
 
 def minimax(g, is_maximizing):
+    # Check for win or draw
     if(g.check_win() == 'X'):
         return -10
-
     elif(g.check_win() == 'O'):
         return 10
-
     elif(g.n_turns == 9):
         return 0
-    
+
+    # Initialize best score
     if(is_maximizing):
         best_score = -1000
-        for i in range(g.size):
-            for j in range(g.size):
-                if(g.make_move(i, j)):
-                    score = minimax(g, False)
-                    g.undo(i, j)
-                    best_score = max(score, best_score)
-    
     else:
         best_score = 1000
-        for i in range(g.size):
-            for j in range(g.size):
-                if(g.make_move(i, j)):
-                    score = minimax(g, True)
-                    g.undo(i, j)
+
+    # Loop through all possible moves
+    for i in range(g.size):
+        for j in range(g.size):
+            # Check if move is valid
+            if(g.make_move(i, j)):
+                # Recursively call minimax for next player
+                score = minimax(g, not is_maximizing)
+                # Undo move and update best score
+                g.undo(i, j)
+                if(is_maximizing):
+                    best_score = max(score, best_score)
+                else:
                     best_score = min(score, best_score)
 
+    # Return best score
     return best_score
+
 
 def play():
     g = Game()
