@@ -103,6 +103,9 @@ def play():
         if(g.check_win()):
             print("You win!")
             break
+        if(g.n_turns == 9):
+            print("Draw!")
+            break
         i, j = bestMove(g)
         g.make_move(i, j)
         if(g.check_win()):
