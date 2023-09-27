@@ -122,5 +122,7 @@ def play():
         if(g.check_win()):
             print("You lose!")
             break
+    g.display()
+    print("Better luck next time :)")
 
 play()
