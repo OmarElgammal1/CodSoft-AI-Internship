@@ -1,3 +1,5 @@
+import os
+
 class Game:
     size = 3
     n_turns = 0
@@ -7,6 +9,8 @@ class Game:
 
 
     def display(self):
+        # Clear the terminal screen
+        os.system('cls')
         print(f" {self.board[0][0]} | {self.board[0][1]} | {self.board[0][2]} ")
         print("---|---|---")
         print(f" {self.board[1][0]} | {self.board[1][1]} | {self.board[1][2]} ")
