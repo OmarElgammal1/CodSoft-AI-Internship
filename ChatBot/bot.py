@@ -70,7 +70,6 @@ def run_bot():
             is_private = True
         if user_ms[0:7] == "weather":
             user_ms = user_ms[8:]
-            print("LOL")
             await ms.channel.send(embed=get_weather(user_ms))
         else:
             await send(ms, user_ms, is_private)
