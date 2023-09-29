@@ -1,6 +1,4 @@
-import numpy as np
 import cv2
-import time
 
 print("Welcome to face detection program!\n1. Use camera\n2. Use video\n3. Exit")
 choice = int(input())
