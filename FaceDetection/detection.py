@@ -2,8 +2,19 @@ import numpy as np
 import cv2
 import time
 
-# Video capturing device
-cap = cv2.VideoCapture(0)
+print("Welcome to face detection program!\n1. Use camera\n2. Use video\n3. Exit")
+choice = int(input())
+if choice == 1:
+    # Video capturing device
+    cap = cv2.VideoCapture(0)
+elif choice == 2:
+    print("Enter file name.extension (mp4 recommended): ")
+    file_name = str(input())
+    # Loading from video
+    cap = cv2.VideoCapture(file_name)
+else:
+    # end program
+    exit()
 
 # Loading cascades
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
