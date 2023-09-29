@@ -28,7 +28,7 @@ def respond(message) -> str:
         return "https://tenor.com/view/rickroll-roll-rick-never-gonna-give-you-up-never-gonna-gif-22954713"
     
     elif ms == "help":
-        return "```I can do the following:\n1. hi: Greet you\n2. diceroll: Roll a dice -> diceroll\n3. coinflip: Flip a coin\n4. time: Tell you the time\n5. rickroll: Never gonna give you up!\n6. Tell you my name\n7. Tell you my age\n8. Tell you how I am doing 9. weather 'city': Tell you how is the weather ```"
+        return "```I can do the following:\n1. hi: Greet you\n2. diceroll: Roll a dice -> diceroll\n3. coinflip: Flip a coin\n4. time: Tell you the time\n5. rickroll: Never gonna give you up!\n6. Tell you my name\n7. Tell you my age\n8. Tell you how I am doing\n9. weather 'city': Tell you how is the weather ```"
 
     else:
         return ""
